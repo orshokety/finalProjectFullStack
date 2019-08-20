@@ -1,0 +1,62 @@
+<div style="text-align: center; width: 440px">
+ 
+  <h1>{{header}}</h1>
+
+  <div class="indiv">
+    <h4>Maker</h4>
+    <mat-form-field >
+      <input matInput placeholder="Maker" [value]="data.maker" #maker required>
+  </mat-form-field>
+  </div>
+
+  <div class="indiv">
+    <h4>Model</h4>
+    <mat-form-field >
+      <input matInput placeholder="Model" [value]="data.model" #model required>
+  </mat-form-field>
+  </div>
+
+  <div class="indiv">
+    <h4>Cost for a day</h4>
+    <mat-form-field>
+      <input matInput placeholder="Enter Cost for a day" type="number" [value]="data.dailyCost" #dailyCost class="quantity" required>
+    </mat-form-field>
+  </div>
+
+  <div class="indiv">
+    <h4>Cost for late</h4>
+    <mat-form-field>
+      <input matInput placeholder="Cost for late" type="number" [value]="data.costOfOverdue" #CostOfOverdue class="quantity" required>
+    </mat-form-field>
+  </div>
+  
+  <div class="indiv">
+    <h4>Year</h4>
+    <mat-form-field>
+      <input matInput placeholder="Year" type="number" [value]="data.year" #year class="quantity" required>
+    </mat-form-field>
+  </div>
+
+  <div class="indiv">
+    <h4>Select Gear</h4>
+    <mat-form-field>
+      <mat-label>Gear</mat-label>
+      <mat-select [value]="data.gear" #gear required >
+        <mat-option *ngFor="let gear of Gears" [value]="gear.value">
+          {{gear.value}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div> 
+  
+  <div class="indiv">
+    <h4>Picture</h4>
+    <input type="file" (change)="readURL($event)" id="carTypePic" style="display: none">
+    <p>click to upload a Picture</p> <label for="carTypePic"><mat-icon>camera_alt</mat-icon></label>
+  </div>
+  
+  <button mat-raised-button style="margin-top: 10%" (click)="saveChanges(maker.value, model.value, dailyCost.value, CostOfOverdue.value, year.value, gear.value)">Save Changes</button>
+
+
+
+</div>

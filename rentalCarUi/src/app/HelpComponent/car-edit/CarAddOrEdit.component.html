@@ -1,0 +1,57 @@
+<div style="text-align: center; width: 440px">
+ 
+  <h1>{{header}}</h1>
+
+  <div class="indiv">
+    <h4>Type number</h4>
+    <mat-form-field>
+      <input matInput placeholder="Enter type number" type="number" [value]="data.typeNumber" #typeNumber class="quantity"
+             title="required 9 numbers on idnumber" required>
+    </mat-form-field>
+  </div>
+
+  <div class="indiv">
+    <h4>Current KM</h4>
+    <mat-form-field>
+      <input matInput placeholder="Enter Current KM" type="number" [value]="data.currentKM" #KM class="quantity"
+             title="required 9 numbers on idnumber" required>
+    </mat-form-field>
+  </div>
+
+  <div class="indiv">
+    <h4>Car number</h4>
+    <mat-form-field>
+      <input matInput placeholder="Enter Car number" type="number" [value]="data.carNumber" #carNumber class="quantity"
+             title="required 9 numbers on idnumber" required>
+    </mat-form-field>
+  </div>
+  
+  <div class="indiv">
+    <h4>Select available</h4>
+    <mat-form-field>
+      <mat-label>Is available</mat-label>
+      <mat-select [value]="data.available" #available required >
+        <mat-option *ngFor="let yn of yesOrNo" [value]="yn.value">
+          {{yn.value}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="indiv">
+    <h4>Select proper</h4>
+    <mat-form-field>
+      <mat-label>Is proper</mat-label>
+      <mat-select [value]="data.proper" #proper required >
+        <mat-option *ngFor="let yn of yesOrNo" [value]="yn.value">
+          {{yn.value}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div> 
+  
+  <button mat-raised-button style="margin-top: 10%" (click)="saveChanges(typeNumber.value, KM.value, carNumber.value, available.value, proper.value)">Save Changes</button>
+
+
+
+</div>

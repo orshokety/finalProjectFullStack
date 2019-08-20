@@ -1,0 +1,20 @@
+<form [formGroup]="loginForm" class="loginform">
+    <h3 *ngIf="error" style="color: red">{{error}}</h3>
+    <h4>User name</h4>
+    <mat-form-field class="logininput">
+        <input matInput placeholder="Enter your user name" formControlName="userName" required>
+    </mat-form-field>
+    <br>
+
+    <h4>Password</h4>
+    <mat-form-field class="logininput">
+      <input matInput placeholder="Enter your password" formControlName="password" [type]="hide ? 'password' : 'text'">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button (click)="loginButton()">login</button>
+    <button mat-raised-button *ngIf="error" (click)="goToRegister()" style="margin-left: 130px">register</button>
+    
+</form>

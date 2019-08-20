@@ -1,0 +1,26 @@
+
+<mat-card class="ditails-cards">
+    <mat-card-header>
+      <mat-card-title>{{data.car.carTypes.maker}}</mat-card-title>
+      <mat-card-subtitle>{{data.car.carTypes.model}}</mat-card-subtitle>
+    </mat-card-header><div class="inCardDiv"> <img mat-card-image src= {{data.car.carTypes.photo}}></div>
+   
+    <mat-card-content><p>
+     <b>KM :</b>  {{data.car.currentKM}}
+      <br>
+      <b>is proper :</b> {{data.car.proper}}
+      <br>
+      <b>cost for day :</b> {{data.car.carTypes.dailyCost}}
+      <br>
+      <b>cost for every day of late :</b> {{data.car.carTypes.costOfOverdue}}
+      <br>
+      <b>year :</b> {{data.car.carTypes.year}}
+      <br>
+      <b>gear :</b> {{data.car.carTypes.gear}}</p>
+    </mat-card-content>
+    <mat-card-actions >
+      <button mat-raised-button (click)="toRentPage(data.car)" *ngIf="isLogedIn()">To rent this car</button>
+      <button mat-button (click)="close()" >Close</button>
+    </mat-card-actions>
+    <mat-card-actions *ngIf="!isLogedIn()">if you want to rent this car you must to <a mat-button [routerLink]="['/register']" title="Submit a new user" (click)="close()">register</a> </mat-card-actions>
+  </mat-card>

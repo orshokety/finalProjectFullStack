@@ -1,0 +1,58 @@
+<div style="padding-top: 5%">
+ <div style="text-align: center"> 
+
+    <h1>Search</h1>
+    <mat-form-field class="searchinput">
+      <mat-label>maker</mat-label>
+      <mat-select #Maker >
+        <mat-option *ngFor="let maker of availAndProperCars | maker : Model.value : Gear.value  : Year.value" value="{{maker}}" >
+          {{maker}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  <mat-form-field class="searchinput">
+    <mat-label>model</mat-label>
+    <mat-select #Model >
+      <mat-option *ngFor="let model of availAndProperCars | model : Gear.value : Maker.value : Year.value " value="{{model}}" >
+        {{model}}
+      </mat-option>
+    </mat-select>
+   </mat-form-field>
+  <mat-form-field class="searchinput"> 
+      <mat-label>gear</mat-label>
+      <mat-select #Gear >
+        <mat-option *ngFor="let gear of  availAndProperCars | gear : Model.value : Maker.value : Year.value " value="{{gear}}" >
+          {{gear}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="searchinput">
+      <mat-label>year</mat-label>
+      <mat-select #Year >
+        <mat-option *ngFor="let year of availAndProperCars | year : Maker.value : Model.value : Gear.value  " value="{{year}}" >
+          {{year}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  <mat-form-field class="searchinput">
+    <input matInput type="text" placeholder="Search by text" #SearchText>
+  </mat-form-field> 
+
+ </div>
+
+
+  <mat-card class="little-cards" *ngFor="let car of availAndProperCars | searchCar : Model.value : Gear.value : Maker.value : Year.value : SearchText.value">
+    <mat-card-header>
+      <mat-card-title>{{car.carTypes.maker}}</mat-card-title>
+      <mat-card-subtitle>{{car.carTypes.model}}</mat-card-subtitle>
+    </mat-card-header><div class="inCardDiv"> <img mat-card-image src = {{car.carTypes.photo}}></div>
+   
+    <mat-card-content>
+    </mat-card-content>
+    <mat-card-actions >
+      <button mat-button (click)="openDitails(car)">More ditails</button>
+    </mat-card-actions>
+  </mat-card>
+
+
+</div> 

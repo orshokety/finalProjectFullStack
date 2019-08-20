@@ -1,0 +1,86 @@
+<body  class="inventory-body">
+    <mat-horizontal-stepper [linear]="isLinear" #stepper>
+        <mat-step [stepControl]="firstFormGroup">
+          <form [formGroup]="firstFormGroup">
+              <ng-template matStepLabel>Choose Dates</ng-template>
+        <mat-card class="card">
+        <mat-card-header>
+          <mat-card-title>{{car.carTypes.maker}}</mat-card-title>
+          <mat-card-subtitle>{{car.carTypes.model}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image [src]="car.carTypes.photo">
+        <mat-card-content><p>
+            <b>KM :</b>  {{car.currentKM}}
+             <br>
+             <b>is proper :</b> {{car.proper}}
+             <br>
+             <b>cost for day :</b> {{car.carTypes.dailyCost}}
+             <br>
+             <b>cost for every day of late :</b> {{car.carTypes.costOfOverdue}}
+             <br>
+             <b>year :</b> {{car.carTypes.year}}
+             <br>
+             <b>gear :</b> {{car.carTypes.gear}}</p>
+           </mat-card-content>
+      </mat-card>
+      <div>
+          <mat-form-field style="padding: 10px">
+            <input matInput [matDatepicker]="startDay" [min]="minDate" [max]="endDay" (dateChange)="startDate($event.target.value)" placeholder="start day"  formControlName="startDay"  disabled>
+            <mat-datepicker-toggle matSuffix [for]="startDay"></mat-datepicker-toggle>
+            <mat-datepicker #startDay disabled="false"></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field style="padding: 10px">
+              <input matInput [matDatepicker]="returnDay" [min]="startForEnd" (dateChange)="endDate($event.target.value)" placeholder="return day" formControlName="endDay" disabled >
+              <mat-datepicker-toggle matSuffix [for]="returnDay"></mat-datepicker-toggle>
+              <mat-datepicker #returnDay disabled="false"></mat-datepicker>
+            </mat-form-field>
+            <br>
+            <p *ngIf="cost">cost for {{diffDays}} days: {{cost| currency}}</p>
+      </div>
+            <div>
+              <button mat-button matStepperNext >Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup">
+          <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Payment</ng-template>
+          <div> <mat-form-field>
+              <mat-label>Select your card</mat-label>
+              <mat-select formControlName="payments" required formControlName="cardType" required >
+                <mat-option *ngFor="let payment of payments" [value]="payment.value">
+                  {{payment.value}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field></div> 
+          <div> <mat-form-field>
+            <input matInput type="number" class="quantity" placeholder="Card Number" formControlName="cardNumber" required>
+            </mat-form-field></div> 
+            <div> <mat-form-field>
+              <input matInput type="text" placeholder="Name on card" formControlName="nameOnCard">
+            </mat-form-field></div> 
+            <div>  <mat-form-field style="padding: 10px">
+              <input matInput [matDatepicker]="picker" placeholder="Expiry Date" formControlName="expiryDate" required>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker disabled="false"></mat-datepicker>
+            </mat-form-field></div>
+            <mat-form-field >
+              <input matInput type="number" class="quantity" placeholder="Security Code" formControlName="securityCode" required>
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext (click)="newOrder()">Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Done</ng-template>
+          <h4>All Done!</h4>
+          <p>thank you</p>
+          <div>
+            <button mat-button (click)="home()">Home</button>
+          </div>
+        </mat-step>
+      </mat-horizontal-stepper>
+
+</body>

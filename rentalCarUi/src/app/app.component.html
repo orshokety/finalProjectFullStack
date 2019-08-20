@@ -1,0 +1,15 @@
+<header >
+    <mat-toolbar color="primary" style="background-color: #811d2f; width: 100%; position: fixed; z-index: 30;">
+        <a mat-button [routerLink]="['/home']" title="Go to home page">home</a>
+        <a mat-button [routerLink]="['/managers']" title="Go to managers page" *ngIf="isManagerBool">managers</a>
+        <a mat-button [routerLink]="['/employee']" title="Go to employee page" *ngIf="isEmployeeBool">employee</a>
+        <a mat-button [routerLink]="['/search']" title="Search Cars"><mat-icon>search</mat-icon></a>
+        <span style="flex: 1 1 auto;"></span>
+        <a mat-button [routerLink]="['/register']" *ngIf="!isLogedIn()" title="Submit a new user">register</a>
+        <button mat-button *ngIf="!isLogedIn()" (click)="logIn()">login</button>
+        <p *ngIf="nameAndPicbool" style="padding-right: 10px"> welcome {{nameAndPic.fullName}} </p>
+        <img [src]="nameAndPic.pic" class="userPic" *ngIf="nameAndPicbool" >
+        <button mat-button *ngIf="isLogedIn()" (click)="logout()">logout</button>
+    </mat-toolbar>
+</header>
+<router-outlet></router-outlet>

@@ -1,0 +1,50 @@
+<div style="text-align: center; width: 440px">
+ 
+  <h1>{{header}}</h1>
+
+  <div class="indiv">
+    <h4>Car number</h4>
+    <mat-form-field>
+      <input matInput placeholder="Enter Car number" type="number" [value]="data.carNumber" #carNumber class="quantity" required>
+    </mat-form-field>
+  </div>
+
+  <div class="indiv">
+    <h4>User ID number</h4>
+    <mat-form-field>
+      <input matInput placeholder="Enter User ID number" type="number" [value]="data.userIDNumber" #userIDNumber class="quantity" required>
+    </mat-form-field>
+  </div>
+  
+  <div class="indiv">
+    <h4>startDate</h4>
+    <mat-form-field>
+      <input matInput [matDatepicker]="startDatePicker" placeholder="startDate" [value]="data.startDate" #startDate disabled >
+      <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #startDatePicker disabled="false"></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+  <div class="indiv">
+    <h4>endDate</h4>
+    <mat-form-field>
+      <input matInput [matDatepicker]="endDatePicker" placeholder="endDate" [value]="data.endDate" #endDate disabled >
+      <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #endDatePicker disabled="false"></mat-datepicker>
+    </mat-form-field>
+  </div>
+  
+  <div class="indiv">
+    <h4>returnDate</h4>
+    <mat-form-field>
+      <input matInput [matDatepicker]="returnDatePicker" placeholder="returnDate" [value]="data.returnDate" #returnDate disabled >
+      <mat-datepicker-toggle matSuffix [for]="returnDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #returnDatePicker disabled="false"></mat-datepicker>
+    </mat-form-field>
+  </div>
+  
+  <button mat-raised-button style="margin-top: 10%" (click)="saveChanges(carNumber.value, userIDNumber.value, startDate.value, endDate.value, returnDate.value)">Save Changes</button>
+
+
+
+</div>

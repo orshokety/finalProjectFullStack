@@ -1,0 +1,12 @@
+.little-cards {
+    max-width: 200px;
+    float: left;
+    margin: 10px;
+    text-align: center
+  }
+.inCardDiv{
+    height: 120px
+}
+.searchinput{
+  margin:10px
+}

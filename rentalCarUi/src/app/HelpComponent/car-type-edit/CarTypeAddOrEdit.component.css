@@ -1,0 +1,12 @@
+div.indiv{
+    width: 220px;
+     height: 120px;
+     float: left;
+     
+}
+ 
+.quantity::-webkit-inner-spin-button, .quantity::-webkit-outer-spin-button { 
+     -webkit-appearance: none; 
+     margin: 0; 
+     
+}

@@ -1,0 +1,78 @@
+<div style="text-align: center; ">
+  <form [formGroup]="userForm" style="width: 440px; display: inline-block; padding-top: 5%">
+    <h1>register</h1>
+
+    <div class="indiv">
+      <h4>Id number</h4>
+      <mat-form-field>
+        <input matInput placeholder="Enter your id number" formControlName="idNumber" type="number" class="quantity"
+               title="required 9 numbers on idnumber" autocomplete="disable" required>
+      </mat-form-field>
+    </div>
+
+    <div class="indiv">
+      <h4>Full name</h4>
+      <mat-form-field>
+        <input matInput placeholder="Enter your full name" formControlName="fullName" required>
+      </mat-form-field>
+    </div>
+    
+    <div class="indiv">
+      <h4>User name</h4>
+      <mat-form-field>
+        <input matInput placeholder="Enter your user name" formControlName="userName" required>
+      </mat-form-field>
+    </div>
+
+    <div class="indiv">
+      <h4>Password</h4>
+      <mat-form-field>
+        <input matInput placeholder="Enter your password" formControlName="password" [type]="hide ? 'password' : 'text'" required>
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+
+    <div class="indiv">
+      <h4>Select your gender</h4>
+      <mat-form-field>
+        <mat-label>gender</mat-label>
+        <mat-select formControlName="gender" required >
+          <mat-option *ngFor="let gender of genders" [value]="gender.value">
+            {{gender.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="indiv">
+      <h4>Email</h4>
+      <mat-form-field>
+        <input matInput placeholder="Enter your email" required formControlName="email">
+      </mat-form-field>
+    </div>
+
+    <div class="indiv">
+      <h4>Birthday</h4>
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Birthday" #pickerInput disabled >
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker disabled="false"></mat-datepicker>
+      </mat-form-field>
+    </div>
+  
+    <div class="indiv">
+      <h4>Picture</h4>
+      <input type="file" (change)="readURL($event)" id="registerPic" style="display: none">
+      <p>click to upload a Picture</p> <label for="registerPic"><mat-icon>camera_alt</mat-icon></label>
+    </div> 
+    
+    <button mat-raised-button (click)="submitNewUser(pickerInput.value)">Register</button>
+
+  </form>
+
+  
+</div>
+
+

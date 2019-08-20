@@ -1,0 +1,12 @@
+.inventory-body {
+    position: fixed;
+    min-width: 100%;
+    background-image: url("https://cdn.pixabay.com/photo/2014/09/07/22/34/car-race-438467_1280.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    padding-top: 5%;
+}
+

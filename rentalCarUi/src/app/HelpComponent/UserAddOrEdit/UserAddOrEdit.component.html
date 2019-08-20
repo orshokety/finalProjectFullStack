@@ -1,0 +1,87 @@
+<div style="text-align: center; width: 440px">
+ 
+    <h1>{{header}}</h1>
+
+    <div class="indiv">
+      <h4>Id number</h4>
+      <mat-form-field>
+        <input matInput placeholder="Enter id number" type="number" [value]="data.idNumber" #idNumber class="quantity"
+               title="required 9 numbers on idnumber" required>
+      </mat-form-field>
+    </div>
+
+    <div class="indiv">
+      <h4>Full name</h4>
+      <mat-form-field>
+        <input matInput placeholder="Enter a full name" [value]="data.fullName" #fullName required>
+      </mat-form-field>
+    </div>
+    
+    <div class="indiv">
+      <h4>User name</h4>
+      <mat-form-field>
+        <input matInput placeholder="Enter a user name" [value]="data.userName" #userName required>
+      </mat-form-field>
+    </div>
+
+    <div class="indiv">
+      <h4>Password</h4>
+      <mat-form-field>
+        <input matInput placeholder="Enter a password" [value]="data.password" [type]="hide ? 'password' : 'text'" #password required>
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+
+    <div class="indiv">
+      <h4>Select a gender</h4>
+      <mat-form-field>
+        <mat-label>gender</mat-label>
+        <mat-select [value]="data.gender" #gender required >
+          <mat-option *ngFor="let gender of genders" [value]="gender.value">
+            {{gender.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="indiv">
+      <h4>Email</h4>
+      <mat-form-field>
+        <input matInput placeholder="Enter a email" [value]="data.email" #email required >
+      </mat-form-field>
+    </div>
+
+    <div class="indiv">
+      <h4>Select a User type </h4>
+      <mat-form-field>
+        <mat-label>User type</mat-label>
+        <mat-select [value]="data.userType" #userType required >
+          <mat-option *ngFor="let userType of userTypes" [value]="userType.value">
+            {{userType.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="indiv">
+      <h4>Birthday</h4>
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Birthday" [value]="data.birthDate" #pickerInput disabled >
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker disabled="false"></mat-datepicker>
+      </mat-form-field>
+    </div>
+  
+    <div class="indiv">
+      <h4>Picture</h4>
+      <input type="file" (change)="readURL($event)" id="addUserPic" style="display: none">
+      <p>click to upload a Picture</p> <label for="addUserPic"><mat-icon>camera_alt</mat-icon></label>
+    </div>
+    
+    <button mat-raised-button style="margin-top: 10%" (click)="saveChanges(idNumber.value, fullName.value, userName.value, password.value, gender.value, email.value, userType.value, pickerInput.value)">Save Changes</button>
+
+    
+  
+</div>
